@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我 — GuyZ.Design | 从一张截图开始聊 IDP</title>
+    <meta name="description" content="把你的配置/内容管理页面截图或 30 秒录屏发我，我会回复 3 条高优先级可落地优化建议。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-current="contact.html">
+    <input type="checkbox" id="themeToggle" class="theme-toggle-input" aria-label="切换主题">
+    <!-- 导航 -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </a>
+            <div class="nav-right">
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html#services" class="nav-link">服务</a>
+                    <a href="index.html#cases" class="nav-link">案例</a>
+                    <a href="contact.html" class="nav-link">联系我</a>
+                    <a href="contact.html" class="nav-cta-btn">发截图，换建议</a>
+                </div>
+                <div class="nav-actions">
+                    <label for="themeToggle" class="theme-toggle-btn" title="切换主题">
+                        <span class="theme-toggle-icon theme-toggle-dark"><i class="fa-solid fa-moon"></i></span>
+                        <span class="theme-toggle-icon theme-toggle-light"><i class="fa-solid fa-sun"></i></span>
+                        <span class="theme-toggle-label theme-toggle-dark-label">暗黑</span>
+                        <span class="theme-toggle-label theme-toggle-light-label">亮色</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="contact-page">
+        <!-- Hero -->
+        <section class="contact-hero">
+            <div class="container">
+                <div class="hero-badge animate-in">
+                    <span class="badge-dot"></span>
+                    零门槛沟通
+                </div>
+                <h1 class="contact-title animate-in delay-1">
+                    聊聊你们的 IDP：<br>从<span class="text-accent">一张截图</span>开始
+                </h1>
+                <p class="contact-desc animate-in delay-2">
+                    把你们的配置/内容管理页面截图或 30 秒录屏发我，<br>
+                    不聊需求文档、不签 NDA、不开会——先看看问题在哪。
+                </p>
+            </div>
+        </section>
+
+        <!-- 内容 -->
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- 左：你会得到什么 -->
+                    <div class="contact-card">
+                        <h3>
+                            <i class="fa-solid fa-gift" style="color: var(--color-accent-light); margin-right: 8px;"></i>
+                            你会得到
+                        </h3>
+                        <div class="contact-steps">
+                            <div class="contact-step">
+                                <p>
+                                    <strong>3 条高优先级可落地优化建议</strong><br>
+                                    不是泛泛的"用户体验需要提升"，而是具体到"这个筛选器应该从下拉改为 Tag 切换，因为选项只有 4 个"。
+                                </p>
+                            </div>
+                            <div class="contact-step">
+                                <p>
+                                    <strong>一份"改版切入点"路线图</strong><br>
+                                    先动哪里最值？哪些改动投入小但用户感知强？帮你排出优先级。
+                                </p>
+                            </div>
+                            <div class="contact-step">
+                                <p>
+                                    <strong>如需合作：周期与交付清单</strong><br>
+                                    明确范围、时间、交付物——不模糊，不画饼。
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: var(--space-xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border);">
+                            <h3 style="font-size: 1rem; margin-bottom: var(--space-md);">
+                                <i class="fa-solid fa-paper-plane" style="color: var(--color-accent-light); margin-right: 8px;"></i>
+                                怎么发？
+                            </h3>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.7;">
+                                加微信后，直接发：<br>
+                                📸 一张你们后台的页面截图<br>
+                                🎥 或者一段 30 秒操作录屏<br>
+                                💬 加一句你觉得最痛的点<br>
+                                <br>
+                                <span style="color: var(--color-text-tertiary);">我通常会在 24 小时内回复。周末可能慢一点，但一定会回。</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 右：微信信息 -->
+                    <div class="contact-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div class="wechat-info">
+                            <img class="wechat-qr-image" src="images/wechat-qr.jpg" alt="微信二维码" onerror="this.style.display='none'" />
+
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: var(--space-lg);">
+                                扫码添加，或手动搜索微信号：
+                            </p>
+
+                            <div class="wechat-id" data-wechat="Guyz1102" title="点击复制微信号">
+                                <i class="fa-brands fa-weixin" style="color: var(--color-green);"></i>
+                                <span>Guyz1102</span>
+                                <span class="copy-hint">点击复制</span>
+                            </div>
+
+                            <p style="font-size: 0.78rem; color: var(--color-text-tertiary); margin-top: var(--space-xl); line-height: 1.6;">
+                                添加时请备注「IDP 体验咨询」<br>
+                                我会优先通过 🤝
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 底部补充信息 -->
+                <div style="text-align: center; margin-top: var(--space-4xl); padding: var(--space-2xl); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); max-width: 700px; margin-left: auto; margin-right: auto;">
+                    <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: var(--space-md);">
+                        不确定适不适合找我？
+                    </h3>
+                    <p style="font-size: 0.92rem; color: var(--color-text-secondary); line-height: 1.8;">
+                        如果你的产品有以下情况，大概率我能帮上忙：<br>
+                        <span style="color: var(--color-text-primary);">✦</span> 配置页越来越复杂，用户开始迷路<br>
+                        <span style="color: var(--color-text-primary);">✦</span> 内容管理流程冗长，操作人员抱怨不断<br>
+                        <span style="color: var(--color-text-primary);">✦</span> 多个模块的交互"各管各的"，一致性很差<br>
+                        <span style="color: var(--color-text-primary);">✦</span> 想做组件库 / 设计规范，但不知道从哪下手
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </div>
+            <p class="footer-copy">© 2026 GuyZ. 专注 IDP 后台体验设计。</p>
+            <div class="footer-links">
+                <a href="index.html#services">服务</a>
+                <a href="index.html#cases">案例</a>
+                <a href="contact.html">联系</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

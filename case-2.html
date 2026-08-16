@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例：内容管理提效 — GuyZ.Design</title>
+    <meta name="description" content="重构内容发布核心链路，把 3 页分散操作合并为 1 屏，发布耗时减少 55%。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-current="#cases">
+    <input type="checkbox" id="themeToggle" class="theme-toggle-input" aria-label="切换主题">
+    <!-- 导航 -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </a>
+            <div class="nav-right">
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html#services" class="nav-link">服务</a>
+                    <a href="index.html#cases" class="nav-link">案例</a>
+                    <a href="contact.html" class="nav-link">联系我</a>
+                    <a href="contact.html" class="nav-cta-btn">发截图，换建议</a>
+                </div>
+                <div class="nav-actions">
+                    <label for="themeToggle" class="theme-toggle-btn" title="切换主题">
+                        <span class="theme-toggle-icon theme-toggle-dark"><i class="fa-solid fa-moon"></i></span>
+                        <span class="theme-toggle-icon theme-toggle-light"><i class="fa-solid fa-sun"></i></span>
+                        <span class="theme-toggle-label theme-toggle-dark-label">暗黑</span>
+                        <span class="theme-toggle-label theme-toggle-light-label">亮色</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="case-detail">
+        <!-- Hero -->
+        <section class="case-detail-hero">
+            <div class="container">
+                <div class="case-tags">
+                    <span class="case-tag">内容管理</span>
+                    <span class="case-tag">流程提效</span>
+                    <span class="case-tag">IDP 后台</span>
+                </div>
+                <h1 class="case-detail-title">
+                    内容管理提效：<br>从"层层点开"到"一屏完成发布与校验"
+                </h1>
+                <div class="case-detail-summary">
+                    <strong>一句话结论：</strong>重构了内容发布的核心链路，把 3 页分散的操作（编辑→预览→发布）合并为 1 屏联动完成，发布耗时减少 55%，校验遗漏问题归零。
+                </div>
+            </div>
+        </section>
+
+        <!-- 内容 -->
+        <div class="case-content container">
+            <!-- 背景与约束 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 背景与约束
+                </span>
+                <h2>运营每天发 20+ 条内容，每条要跳 3 个页面</h2>
+                <p>
+                    该平台的内容管理模块负责面向研发的公告、变更通知、文档片段等内容的发布。运营同学每天要处理 20–30 条内容，但发布一条内容需要：进编辑页填写 → 跳到预览页确认 → 回到列表页点发布。三个页面来回跳，每条内容平均耗时 4.5 分钟。
+                </p>
+                <ul>
+                    <li>业务目标：提升内容发布效率，减少校验遗漏</li>
+                    <li>核心角色：内容运营（日均 20+ 次操作）、审核人（抽查确认）</li>
+                    <li>历史包袱：编辑器、预览、发布分属不同迭代期间开发，未做链路整合</li>
+                    <li>研发资源：1 名前端 + 1 名后端，改版窗口 2 周</li>
+                </ul>
+            </section>
+
+            <!-- 问题证据 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 问题证据
+                </span>
+                <h2>录屏 + 工单：三个断裂点</h2>
+                <p>
+                    通过录屏观察 3 位运营同学的操作流程，结合近 2 个月的内部工单：
+                </p>
+                <ul>
+                    <li><strong>编辑 → 预览断裂：</strong>编辑完成后必须手动点"保存草稿"，然后跳到预览页——如果忘记保存，预览看到的是旧版本，已发生 7 次事故</li>
+                    <li><strong>预览 → 发布断裂：</strong>预览页没有"直接发布"按钮，需要返回列表页找到该条目再点发布，路径冗长</li>
+                    <li><strong>校验遗漏：</strong>必填字段校验只在提交时触发，运营经常填了半小时才发现标题/封面图漏了</li>
+                </ul>
+            </section>
+
+            <!-- 关键取舍 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 关键取舍
+                </span>
+                <h2>合并页面 vs. 优化跳转？我选合并</h2>
+                <p>
+                    当时有两个方案可选：
+                </p>
+                <ul>
+                    <li><strong>方案 A（选中）：</strong>编辑/预览/发布合并为一屏，左编辑右预览，底部发布栏常驻——代价是前端需要重构页面布局</li>
+                    <li><strong>方案 B（放弃）：</strong>保留三页结构，优化页面间跳转速度和自动保存——代价低但用户体感改善有限</li>
+                    <li><strong>决策依据：</strong>运营同学的核心痛点是"来回跳"而非"跳得慢"，合并页面从根本上消灭了这个问题</li>
+                    <li><strong>暂不做：</strong>内容模板系统（频次不够高）、批量发布（需要后端 API 改造，排入下期）</li>
+                </ul>
+            </section>
+
+            <!-- 方案展示 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 方案展示
+                </span>
+                <h2>一屏三区：编辑 / 预览 / 发布一气呵成</h2>
+
+                <div class="compare-grid">
+                    <div class="compare-card before">
+                        <div class="compare-label">Before</div>
+                        <ul>
+                            <li>编辑、预览、发布分散在 3 个页面</li>
+                            <li>手动保存草稿，容易遗忘</li>
+                            <li>校验仅在最终提交时触发</li>
+                            <li>无实时预览，编辑和预览脱节</li>
+                            <li>单条发布耗时 4.5 分钟</li>
+                        </ul>
+                    </div>
+                    <div class="compare-card after">
+                        <div class="compare-label">After</div>
+                        <ul>
+                            <li>左编辑 + 右预览 + 底部发布栏，一屏完成</li>
+                            <li>自动保存，300ms 防抖，告别手动保存</li>
+                            <li>实时校验 + 字段级错误提示</li>
+                            <li>编辑即预览，所见即所得</li>
+                            <li>单条发布耗时 2 分钟，降低 55%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>
+                    关键交互细节：底部发布栏设计为"粘性固定"，始终显示当前内容状态（草稿/待审核/已发布）和校验进度（3/5 项已完成），让运营同学在编辑过程中始终知道"我离发布还差几步"。
+                </p>
+            </section>
+
+            <!-- 落地协作 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 落地协作
+                </span>
+                <h2>前后端协作：接口先行，组件跟进</h2>
+                <ul>
+                    <li><strong>接口对齐：</strong>与后端确认自动保存 API（防抖策略、冲突处理），实时校验无需新增接口，前端本地完成</li>
+                    <li><strong>组件拆分：</strong>编辑区、预览区、发布栏拆为独立组件，前端可并行开发、独立测试</li>
+                    <li><strong>验收 checklist：</strong>覆盖 8 个关键状态（空状态、自动保存触发、校验报错、网络断开恢复等），逐一走查</li>
+                </ul>
+            </section>
+
+            <!-- 复盘与下一步 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 复盘与下一步
+                </span>
+                <h2>效率翻倍，但还有空间</h2>
+                <ul>
+                    <li><strong>已验证：</strong>发布耗时从 4.5 分钟降至 2 分钟（-55%），校验遗漏问题从月均 7 次降至 0 次，运营满意度评分从 3.2→4.6（5 分制）</li>
+                    <li><strong>待深入：</strong>内容模板系统（减少重复填写）、批量发布能力（后端 API 改造中）、内容版本对比（目前只有最新版本快照）</li>
+                </ul>
+            </section>
+
+            <!-- CTA -->
+            <div class="case-cta-section">
+                <h3>你的内容管理流程也在"层层点开"？</h3>
+                <p>发一段操作录屏给我，我帮你找到链路断裂点。</p>
+                <a href="contact.html" class="btn btn-primary">
+                    <i class="fa-brands fa-weixin"></i>
+                    加微信聊聊
+                </a>
+            </div>
+
+            <!-- 案例导航 -->
+            <div class="case-nav">
+                <a href="case-1.html">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    上一个案例：配置页信息架构重构
+                </a>
+                <a href="case-3.html">
+                    下一个案例：权限与状态一致性治理
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </div>
+            <p class="footer-copy">© 2026 GuyZ. 专注 IDP 后台体验设计。</p>
+            <div class="footer-links">
+                <a href="index.html#services">服务</a>
+                <a href="index.html#cases">案例</a>
+                <a href="contact.html">联系</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例：配置页信息架构重构 — GuyZ.Design</title>
+    <meta name="description" content="重新梳理了 40+ 配置项的分类逻辑与交互层级，将平均操作路径从 7 步缩短至 3 步。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-current="#cases">
+    <input type="checkbox" id="themeToggle" class="theme-toggle-input" aria-label="切换主题">
+    <!-- 导航 -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </a>
+            <div class="nav-right">
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html#services" class="nav-link">服务</a>
+                    <a href="index.html#cases" class="nav-link">案例</a>
+                    <a href="contact.html" class="nav-link">联系我</a>
+                    <a href="contact.html" class="nav-cta-btn">发截图，换建议</a>
+                </div>
+                <div class="nav-actions">
+                    <label for="themeToggle" class="theme-toggle-btn" title="切换主题">
+                        <span class="theme-toggle-icon theme-toggle-dark"><i class="fa-solid fa-moon"></i></span>
+                        <span class="theme-toggle-icon theme-toggle-light"><i class="fa-solid fa-sun"></i></span>
+                        <span class="theme-toggle-label theme-toggle-dark-label">暗黑</span>
+                        <span class="theme-toggle-label theme-toggle-light-label">亮色</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="case-detail">
+        <!-- Hero -->
+        <section class="case-detail-hero">
+            <div class="container">
+                <div class="case-tags">
+                    <span class="case-tag">信息架构</span>
+                    <span class="case-tag">配置体验</span>
+                    <span class="case-tag">IDP 后台</span>
+                </div>
+                <h1 class="case-detail-title">
+                    配置页信息架构重构：<br>让关键参数"找得到、看得懂、改得稳"
+                </h1>
+                <div class="case-detail-summary">
+                    <strong>一句话结论：</strong>重新梳理了 40+ 配置项的分类逻辑与交互层级，将"所有配置平铺一页"重构为"任务导向分层结构"，平均操作路径从 7 步缩短至 3 步，配置出错率降低 62%。
+                </div>
+            </div>
+        </section>
+
+        <!-- 内容 -->
+        <div class="case-content container">
+            <!-- 背景与约束 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 背景与约束
+                </span>
+                <h2>一个"什么都能配"的页面，反而什么都配不好</h2>
+                <p>
+                    该 IDP 服务于 200+ 研发人员，承载了从环境配置、流水线参数、部署策略到灰度规则等核心能力。但随着业务迭代，配置页已经膨胀到单页 40+ 配置项，没有分组、没有优先级、没有上下文——研发同学反馈最多的一句话是："我知道能改，但我不知道改哪个才对。"
+                </p>
+                <ul>
+                    <li>业务目标：降低配置出错率，缩短操作路径</li>
+                    <li>核心角色：后端研发（日常操作）、SRE（审批&回溯）</li>
+                    <li>历史包袱：配置项由不同团队追加，缺乏统一分类标准</li>
+                    <li>研发资源：1 名前端，改版窗口 3 周</li>
+                </ul>
+            </section>
+
+            <!-- 问题证据 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 问题证据
+                </span>
+                <h2>走查 + 反馈：三个核心痛点</h2>
+                <p>
+                    通过 5 场 1v1 走查观察和内部工单反馈汇总，提炼出三个高频问题：
+                </p>
+                <ul>
+                    <li><strong>找不到：</strong>40+ 配置项平铺，无分组、无搜索，操作者需要逐一扫读定位</li>
+                    <li><strong>看不懂：</strong>配置项命名使用系统内部术语（如 <code>replica_strategy_v2</code>），缺乏人话解释和业务上下文</li>
+                    <li><strong>改不稳：</strong>没有变更对比、没有影响说明、没有回滚入口——改完了才知道改错了</li>
+                </ul>
+            </section>
+
+            <!-- 关键取舍 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 关键取舍
+                </span>
+                <h2>不做全量改版，只打穿一条主线</h2>
+                <p>
+                    时间窗口只有 3 周、前端只有 1 人，所以我们不做"设计系统级"的改版，而是：
+                </p>
+                <ul>
+                    <li><strong>聚焦最高频路径：</strong>环境配置 + 部署策略，覆盖 70% 日常操作</li>
+                    <li><strong>放弃低频长尾配置的重构：</strong>先不动灰度规则、监控阈值等模块</li>
+                    <li><strong>重排不重写：</strong>复用现有组件，只改信息架构和交互层级</li>
+                    <li><strong>优先做"可感知的改善"：</strong>搜索、分组、变更对比——让用户一打开就觉得不一样</li>
+                </ul>
+            </section>
+
+            <!-- 方案展示 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 方案展示
+                </span>
+                <h2>从"平铺清单"到"任务导向分层"</h2>
+
+                <div class="compare-grid">
+                    <div class="compare-card before">
+                        <div class="compare-label">Before</div>
+                        <ul>
+                            <li>40+ 配置项单页平铺，无分组</li>
+                            <li>配置项名称 = 系统字段名</li>
+                            <li>修改即生效，无确认/对比</li>
+                            <li>无搜索入口</li>
+                            <li>出错后无回滚，靠工单找运维</li>
+                        </ul>
+                    </div>
+                    <div class="compare-card after">
+                        <div class="compare-label">After</div>
+                        <ul>
+                            <li>按任务场景分为 4 个配置组</li>
+                            <li>配置名 + 一行人话说明 + 影响范围标签</li>
+                            <li>修改前弹出变更对比面板</li>
+                            <li>顶部全局搜索 + 最近修改快捷入口</li>
+                            <li>每次变更自动快照，一键回滚</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>
+                    关键设计决策：配置分组不按"技术模块"分（如 Kubernetes / CI/CD），而按"操作意图"分（如"我要上线""我要扩容""我要回滚"），让研发同学在心智模型层面零适应成本。
+                </p>
+            </section>
+
+            <!-- 落地协作 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 落地协作
+                </span>
+                <h2>评审 → 标注 → 验收：三轮对齐</h2>
+                <ul>
+                    <li><strong>评审对齐：</strong>产出高保真原型 + 交互状态说明（正常/空/异常/权限不足），邀请 SRE 和前端一起评审，提前锁定边界条件</li>
+                    <li><strong>设计标注：</strong>按组件粒度出标注（不是按页面），前端可并行开发</li>
+                    <li><strong>验收 checklist：</strong>覆盖 12 个交互状态，逐条走查，确保设计意图落地</li>
+                </ul>
+            </section>
+
+            <!-- 复盘与下一步 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 复盘与下一步
+                </span>
+                <h2>已验证 & 待深入</h2>
+                <ul>
+                    <li><strong>已验证：</strong>平均操作路径从 7 步 → 3 步，配置出错率下降 62%，SRE 审批效率提升（变更对比让审批有据可依）</li>
+                    <li><strong>待深入：</strong>低频长尾配置（灰度规则、监控阈值）仍未重构；配置项之间的依赖关系可视化尚未实现；多环境配置对比功能在规划中</li>
+                </ul>
+            </section>
+
+            <!-- CTA -->
+            <div class="case-cta-section">
+                <h3>你的配置页也有类似困扰？</h3>
+                <p>发一张截图给我，我帮你诊断信息架构的问题在哪。</p>
+                <a href="contact.html" class="btn btn-primary">
+                    <i class="fa-brands fa-weixin"></i>
+                    加微信聊聊
+                </a>
+            </div>
+
+            <!-- 案例导航 -->
+            <div class="case-nav">
+                <a href="index.html#cases">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    返回全部案例
+                </a>
+                <a href="case-2.html">
+                    下一个案例：内容管理提效
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </div>
+            <p class="footer-copy">© 2026 GuyZ. 专注 IDP 后台体验设计。</p>
+            <div class="footer-links">
+                <a href="index.html#services">服务</a>
+                <a href="index.html#cases">案例</a>
+                <a href="contact.html">联系</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

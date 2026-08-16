@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuyZ — IDP 后台体验设计师 | 把复杂配置做成顺手的秩序</title>
+    <meta name="description" content="专注内部开发平台（IDP）后台体验改版：配置与内容管理为核心场景，让研发与运营更快完成、少走弯路、少出错。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <input type="checkbox" id="themeToggle" class="theme-toggle-input" aria-label="切换主题">
+    <!-- 导航 -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </a>
+            <div class="nav-right">
+                <div class="nav-links" id="navLinks">
+                    <a href="#services" class="nav-link">服务</a>
+                    <a href="#cases" class="nav-link">案例</a>
+                    <a href="contact.html" class="nav-link">联系我</a>
+                    <a href="contact.html" class="nav-cta-btn">发截图，换建议</a>
+                </div>
+                <div class="nav-actions">
+                    <label for="themeToggle" class="theme-toggle-btn" title="切换主题">
+                        <span class="theme-toggle-icon theme-toggle-dark"><i class="fa-solid fa-moon"></i></span>
+                        <span class="theme-toggle-icon theme-toggle-light"><i class="fa-solid fa-sun"></i></span>
+                        <span class="theme-toggle-label theme-toggle-dark-label">暗黑</span>
+                        <span class="theme-toggle-label theme-toggle-light-label">亮色</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge animate-in">
+                    <span class="badge-dot"></span>
+                    IDP 后台体验设计
+                </div>
+                <h1 class="hero-title animate-in delay-1">
+                    把 IDP 的复杂配置，<br>做成<span class="text-accent">顺手的秩序</span>。
+                </h1>
+                <p class="hero-subtitle animate-in delay-2">
+                    我专注内部开发平台（IDP）的后台体验改版：配置与内容管理为核心场景，从信息架构、流程到组件体系，让研发与运营在同一套系统里更快完成、少走弯路、少出错。
+                </p>
+                <div class="hero-tags animate-in delay-3">
+                    <span class="tag">配置体验重构</span>
+                    <span class="tag">内容管理效率优化</span>
+                    <span class="tag">权限/状态一致性</span>
+                    <span class="tag">组件与模式库</span>
+                    <span class="tag">评审对齐与落地验收</span>
+                </div>
+                <div class="hero-ctas animate-in delay-4">
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="fa-brands fa-weixin"></i>
+                        加微信，发截图换 3 条优化建议
+                    </a>
+                    <a href="#cases" class="btn btn-ghost">
+                        查看案例
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual animate-in delay-3">
+                <div class="hero-card-stack">
+                    <div class="hero-float-card card-1">
+                        <div class="float-icon"><i class="fa-solid fa-sitemap"></i></div>
+                        <span>信息架构重排</span>
+                    </div>
+                    <div class="hero-float-card card-2">
+                        <div class="float-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <span>组件模式库</span>
+                    </div>
+                    <div class="hero-float-card card-3">
+                        <div class="float-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <span>权限状态一致</span>
+                    </div>
+                    <div class="hero-float-card card-4">
+                        <div class="float-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <span>流程提效</span>
+                    </div>
+                    <!-- 中心图形 -->
+                    <div class="hero-center-graphic">
+                        <div class="center-ring ring-1"></div>
+                        <div class="center-ring ring-2"></div>
+                        <div class="center-ring ring-3"></div>
+                        <div class="center-icon"><i class="fa-solid fa-cubes"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-hint animate-in delay-5">
+            <span>向下探索</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <!-- 服务 -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">我提供的服务</span>
+                <h2 class="section-title">三种合作深度，<br>按你的节奏来</h2>
+                <p class="section-desc">不管是快速摸底还是系统改版，都有对应的交付粒度。</p>
+            </div>
+            <div class="services-grid">
+                <!-- 服务 1 -->
+                <div class="service-card" data-index="01">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-stethoscope"></i>
+                        </div>
+                        <div class="service-meta">
+                            <span class="service-duration"><i class="fa-regular fa-clock"></i> 5 个工作日</span>
+                        </div>
+                    </div>
+                    <h3 class="service-title">体验体检</h3>
+                    <ul class="service-list">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            关键任务地图（角色—任务—路径）
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            问题清单（严重级 / 影响面 / 修复成本）
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            1 条高频链路的快速原型建议
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            改版优先级与排期建议
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="service-cta">
+                        先聊 15 分钟，判断值不值得改
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 服务 2 -->
+                <div class="service-card featured" data-index="02">
+                    <div class="service-popular">最受欢迎</div>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-pen-ruler"></i>
+                        </div>
+                        <div class="service-meta">
+                            <span class="service-duration"><i class="fa-regular fa-clock"></i> 2–4 周</span>
+                        </div>
+                    </div>
+                    <h3 class="service-title">关键模块改版</h3>
+                    <p class="service-focus">聚焦：配置 / 内容管理</p>
+                    <ul class="service-list">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            信息架构重排（让"能配置"≠"难配置"）
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            列表/详情/编辑链路提效（筛选、批量、对比、回溯）
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            高保真方案 + 交互说明（状态、校验、异常）
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            评审材料 + 研发对齐（减少返工）
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="service-cta">
+                        发你们模块结构，我给改版切入点
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 服务 3 -->
+                <div class="service-card" data-index="03">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-cubes-stacked"></i>
+                        </div>
+                        <div class="service-meta">
+                            <span class="service-duration"><i class="fa-regular fa-clock"></i> 3–6 周</span>
+                        </div>
+                    </div>
+                    <h3 class="service-title">组件与规范体系</h3>
+                    <ul class="service-list">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            组件库 & 模式库（表单、表格、筛选、弹窗、引导、权限态）
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            内容模型与字段规范（口径统一、可复用）
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            状态/权限/错误处理规范（可预测、可解释）
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            设计—研发—验收协作模板
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="service-cta">
+                        我帮你判断：先做组件还是先做流程
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案例 -->
+    <section class="cases" id="cases">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">案例精选</span>
+                <h2 class="section-title">用结果说话</h2>
+                <p class="section-desc">每个案例都是一条完整的改善链路：从问题到方案，从落地到复盘。</p>
+            </div>
+            <div class="cases-grid">
+                <!-- 案例 1 -->
+                <a href="case-1.html" class="case-card">
+                    <div class="case-cover">
+                        <div class="case-cover-inner">
+                            <div class="case-icon-large"><i class="fa-solid fa-sitemap"></i></div>
+                            <div class="case-pattern pattern-1"></div>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <div class="case-tags">
+                            <span class="case-tag">信息架构</span>
+                            <span class="case-tag">配置体验</span>
+                        </div>
+                        <h3 class="case-title">配置页信息架构重构：让关键参数"找得到、看得懂、改得稳"</h3>
+                        <p class="case-excerpt">重新梳理了 40+ 配置项的分类逻辑与交互层级，将平均操作路径从 7 步缩短至 3 步，配置出错率降低 62%。</p>
+                        <span class="case-link">
+                            查看详情
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 案例 2 -->
+                <a href="case-2.html" class="case-card">
+                    <div class="case-cover">
+                        <div class="case-cover-inner">
+                            <div class="case-icon-large"><i class="fa-solid fa-rocket"></i></div>
+                            <div class="case-pattern pattern-2"></div>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <div class="case-tags">
+                            <span class="case-tag">内容管理</span>
+                            <span class="case-tag">流程提效</span>
+                        </div>
+                        <h3 class="case-title">内容管理提效：从"层层点开"到"一屏完成发布与校验"</h3>
+                        <p class="case-excerpt">重构了内容发布的核心链路，把 3 页分散的操作合并为 1 屏，发布耗时减少 55%，校验遗漏问题归零。</p>
+                        <span class="case-link">
+                            查看详情
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 案例 3 -->
+                <a href="case-3.html" class="case-card">
+                    <div class="case-cover">
+                        <div class="case-cover-inner">
+                            <div class="case-icon-large"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="case-pattern pattern-3"></div>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <div class="case-tags">
+                            <span class="case-tag">权限治理</span>
+                            <span class="case-tag">一致性</span>
+                        </div>
+                        <h3 class="case-title">权限与状态一致性治理：让同一动作在不同模块不再"性格分裂"</h3>
+                        <p class="case-excerpt">统一了 5 大模块的权限判断逻辑与状态流转，消灭了 23 处行为不一致问题，用户投诉减少 78%。</p>
+                        <span class="case-link">
+                            查看详情
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 CTA -->
+    <section class="bottom-cta">
+        <div class="container">
+            <div class="bottom-cta-inner">
+                <div class="bottom-cta-content">
+                    <h2 class="bottom-cta-title">你的 IDP 后台，有没有让人"顺手"？</h2>
+                    <p class="bottom-cta-desc">
+                        发一张页面截图或 30 秒录屏给我，<br>我回你 3 条高优先级、可落地的优化建议。<br>
+                        <strong>零门槛，零套路。</strong>
+                    </p>
+                </div>
+                <div class="bottom-cta-actions">
+                    <a href="contact.html" class="btn btn-primary btn-lg">
+                        <i class="fa-brands fa-weixin"></i>
+                        加微信聊聊
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </div>
+            <p class="footer-copy">© 2026 GuyZ. 专注 IDP 后台体验设计。</p>
+            <div class="footer-links">
+                <a href="#services">服务</a>
+                <a href="#cases">案例</a>
+                <a href="contact.html">联系</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

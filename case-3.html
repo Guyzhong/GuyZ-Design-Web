@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例：权限与状态一致性治理 — GuyZ.Design</title>
+    <meta name="description" content="统一了 5 大模块的权限判断逻辑与状态流转，消灭了 23 处行为不一致问题。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-current="#cases">
+    <input type="checkbox" id="themeToggle" class="theme-toggle-input" aria-label="切换主题">
+    <!-- 导航 -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </a>
+            <div class="nav-right">
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html#services" class="nav-link">服务</a>
+                    <a href="index.html#cases" class="nav-link">案例</a>
+                    <a href="contact.html" class="nav-link">联系我</a>
+                    <a href="contact.html" class="nav-cta-btn">发截图，换建议</a>
+                </div>
+                <div class="nav-actions">
+                    <label for="themeToggle" class="theme-toggle-btn" title="切换主题">
+                        <span class="theme-toggle-icon theme-toggle-dark"><i class="fa-solid fa-moon"></i></span>
+                        <span class="theme-toggle-icon theme-toggle-light"><i class="fa-solid fa-sun"></i></span>
+                        <span class="theme-toggle-label theme-toggle-dark-label">暗黑</span>
+                        <span class="theme-toggle-label theme-toggle-light-label">亮色</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="case-detail">
+        <!-- Hero -->
+        <section class="case-detail-hero">
+            <div class="container">
+                <div class="case-tags">
+                    <span class="case-tag">权限治理</span>
+                    <span class="case-tag">一致性</span>
+                    <span class="case-tag">IDP 后台</span>
+                </div>
+                <h1 class="case-detail-title">
+                    权限与状态一致性治理：<br>让同一动作在不同模块不再"性格分裂"
+                </h1>
+                <div class="case-detail-summary">
+                    <strong>一句话结论：</strong>统一了 5 大模块的权限判断逻辑与状态流转规范，消灭了 23 处行为不一致问题（同一按钮在不同模块表现不同），用户投诉减少 78%，新模块接入成本降低 60%。
+                </div>
+            </div>
+        </section>
+
+        <!-- 内容 -->
+        <div class="case-content container">
+            <!-- 背景与约束 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 背景与约束
+                </span>
+                <h2>"删除"按钮在 A 模块弹确认框，在 B 模块直接删</h2>
+                <p>
+                    该 IDP 在两年间由 3 个团队交替维护，5 大核心模块（配置管理、内容管理、环境管理、流水线、权限中心）分别在不同时期开发。结果是：同一个"删除"操作，在配置管理里会弹二次确认，在内容管理里直接执行；同一个"只读"状态，在 A 模块灰掉按钮，在 B 模块隐藏按钮，在 C 模块显示按钮但点击报错。
+                </p>
+                <ul>
+                    <li>业务目标：统一交互行为、降低用户困惑和投诉</li>
+                    <li>核心角色：所有使用者（200+），特别是跨模块操作频繁的 SRE</li>
+                    <li>历史包袱：5 个模块、3 个前端团队、没有统一的交互规范文档</li>
+                    <li>研发资源：规范制定 + 2 名前端渐进式改造，窗口 4 周</li>
+                </ul>
+            </section>
+
+            <!-- 问题证据 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 问题证据
+                </span>
+                <h2>23 处"性格分裂"：问题图谱</h2>
+                <p>
+                    通过全模块走查（5 个模块 × 8 个高频操作 × 3 种角色），建立了一张"行为一致性审计表"：
+                </p>
+                <ul>
+                    <li><strong>权限态不一致（9 处）：</strong>无权限时的表现形态不统一——灰掉、隐藏、显示但报错，三种方式混用</li>
+                    <li><strong>危险操作处理不一致（6 处）：</strong>删除/停用等高风险操作，有的有二次确认，有的没有，有的确认文案是通用模板</li>
+                    <li><strong>状态流转不一致（5 处）：</strong>草稿→发布的流转在不同模块有不同步骤数和校验规则</li>
+                    <li><strong>错误反馈不一致（3 处）：</strong>操作失败时 toast / 弹窗 / 页内提示混用，定位和持续时间各不同</li>
+                </ul>
+            </section>
+
+            <!-- 关键取舍 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 关键取舍
+                </span>
+                <h2>先定规范，再分批改造，不追求一步到位</h2>
+                <ul>
+                    <li><strong>先规范后实现：</strong>第 1–2 周出规范文档 + 组件模式，第 3–4 周在最高频的 2 个模块落地，其余模块按迭代节奏渐进替换</li>
+                    <li><strong>不改底层权限模型：</strong>后端权限判断逻辑不动，只统一前端的"权限态"表现形态</li>
+                    <li><strong>定一条原则：</strong>"无权限 = 灰掉 + tooltip 说明原因"，不隐藏、不让点击后报错——让用户"看得到自己没有什么"，而不是"不知道还有什么"</li>
+                    <li><strong>暂不做：</strong>细粒度权限配置界面改版（排入后续迭代）</li>
+                </ul>
+            </section>
+
+            <!-- 方案展示 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 方案展示
+                </span>
+                <h2>四层规范：从原则到组件</h2>
+
+                <div class="compare-grid">
+                    <div class="compare-card before">
+                        <div class="compare-label">Before</div>
+                        <ul>
+                            <li>无权限：灰掉/隐藏/可点但报错，混用</li>
+                            <li>危险操作：有/没有二次确认，随缘</li>
+                            <li>状态流转：各模块自定义，步骤数不同</li>
+                            <li>错误提示：toast/弹窗/页内提示混用</li>
+                            <li>新模块接入：从零写交互逻辑</li>
+                        </ul>
+                    </div>
+                    <div class="compare-card after">
+                        <div class="compare-label">After</div>
+                        <ul>
+                            <li>统一：灰掉 + tooltip 说明缺什么权限</li>
+                            <li>统一：所有危险操作必弹确认 + 影响说明</li>
+                            <li>统一：状态机模型 + 流转规则文档</li>
+                            <li>统一：toast 用于成功/信息，弹窗用于需确认</li>
+                            <li>新模块接入：复用规范组件，成本降 60%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>
+                    规范体系分四层：<strong>①原则层</strong>（可预测、可解释、可回退）→ <strong>②模式层</strong>（权限态、危险操作、状态流转、错误反馈 4 个模式）→ <strong>③组件层</strong>（PermissionGuard / DangerConfirm / StatusBadge 等封装组件）→ <strong>④验收层</strong>（checklist + 走查脚本）。
+                </p>
+            </section>
+
+            <!-- 落地协作 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 落地协作
+                </span>
+                <h2>跨团队对齐：让三个前端团队用同一套规则</h2>
+                <ul>
+                    <li><strong>规范评审会：</strong>邀请 3 个前端团队 + 产品负责人，逐条过规范条目，现场决议边界 case</li>
+                    <li><strong>组件化交付：</strong>封装 PermissionGuard / DangerConfirm / StatusFlow 三个核心组件，附使用文档和 Storybook 示例</li>
+                    <li><strong>渐进式迁移计划：</strong>配置管理和内容管理在当期改完，其余模块各自排期，确保不阻塞各团队节奏</li>
+                    <li><strong>验收走查：</strong>设计侧产出 23 条 checklist（对应 23 处不一致），改一条勾一条</li>
+                </ul>
+            </section>
+
+            <!-- 复盘与下一步 -->
+            <section class="case-section">
+                <span class="case-section-label">
+                    <i class="fa-solid fa-circle"></i> 复盘与下一步
+                </span>
+                <h2>"一致性"是个持续工程</h2>
+                <ul>
+                    <li><strong>已验证：</strong>用户投诉减少 78%（月均 18 条→4 条），新模块接入交互开发成本降低 60%，SRE 跨模块操作效率明显提升（不再需要"适应"不同模块的脾气）</li>
+                    <li><strong>待深入：</strong>权限中心自身的管理界面改版（当前管理端也有一致性问题）、细粒度权限的前端可视化、自动化一致性检测（CI 级别的走查）</li>
+                </ul>
+            </section>
+
+            <!-- CTA -->
+            <div class="case-cta-section">
+                <h3>你的后台系统也"性格分裂"？</h3>
+                <p>发一张截图，我帮你做一次一致性快速审计。</p>
+                <a href="contact.html" class="btn btn-primary">
+                    <i class="fa-brands fa-weixin"></i>
+                    加微信聊聊
+                </a>
+            </div>
+
+            <!-- 案例导航 -->
+            <div class="case-nav">
+                <a href="case-2.html">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    上一个案例：内容管理提效
+                </a>
+                <a href="index.html#cases">
+                    返回全部案例
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="logo-mark">G</span>
+                <span class="logo-text">GuyZ<span class="logo-dot">.</span>Design</span>
+            </div>
+            <p class="footer-copy">© 2026 GuyZ. 专注 IDP 后台体验设计。</p>
+            <div class="footer-links">
+                <a href="index.html#services">服务</a>
+                <a href="index.html#cases">案例</a>
+                <a href="contact.html">联系</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
