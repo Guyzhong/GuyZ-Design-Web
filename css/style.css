@@ -1062,6 +1062,21 @@ img {
     color: var(--color-accent-light);
 }
 
+.footer-icp {
+    margin-top: var(--space-lg);
+    text-align: center;
+}
+
+.footer-icp a {
+    font-size: 0.8rem;
+    color: var(--color-text-tertiary);
+    transition: color var(--duration-fast);
+}
+
+.footer-icp a:hover {
+    color: var(--color-accent-light);
+}
+
 /* =========================================
    Animations
    ========================================= */
